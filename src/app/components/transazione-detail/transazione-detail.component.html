@@ -1,0 +1,26 @@
+<div
+  class="card"
+  style="width: 26rem"
+  *ngIf="transazione"
+  [ngClass]="{
+    'bg-success': transazione.type == 'invoice',
+    'bg-secondary': transazione.type == 'withdrawal'
+  }"
+>
+  <div class="card-body">
+    <h5 class="card-title">{{ transazione.business }}</h5>
+    <p class="card-text">{{ transazione.name }}</p>
+    <p class="card-text">Account: {{ transazione.account }}</p>
+    <p class="card-text">
+      Date: {{ transazione.date * 1000 | date : "dd/MM/yyyy HH:mm:ss" }}
+    </p>
+    <p class="card-text">Type: {{ transazione.type }}</p>
+    <p class="card-text" [ngClass]="{ 'bg-warning': transazione.amount > 700 }">
+      Amount: {{ transazione.amount | currency }}
+    </p>
+    <hr />
+    <button type="button" class="btn btn-danger" (click)="elimina()">
+      <i class="bi bi-trash"></i>
+    </button>
+  </div>
+</div>

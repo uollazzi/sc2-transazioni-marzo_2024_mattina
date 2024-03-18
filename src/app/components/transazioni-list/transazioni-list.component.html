@@ -1,0 +1,7 @@
+<div class="d-flex flex-wrap gap-3">
+  <app-transazione-detail
+    *ngFor="let t of transazioni"
+    [transazione]="t"
+    (onRichiestaEliminazione)="eliminaTransazione($event)"
+  ></app-transazione-detail>
+</div>
